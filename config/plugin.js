@@ -4,5 +4,5 @@
 // exports.static = true;
 exports.mysql = {
   enable: true,
-  package: 'egg-sql'
+  package: 'egg-mysql'
 }
