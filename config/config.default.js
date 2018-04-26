@@ -14,8 +14,8 @@ module.exports = appInfo => {
       host: 'localhost',
       port: '3306',
       user: 'root',
-      password: 0000,
-      database: 'exam_system'
+      password: 'root',
+      database: 'exam_system',
     },
     app: true,
     agent: false,

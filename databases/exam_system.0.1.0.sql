@@ -22,16 +22,22 @@
 DROP TABLE IF EXISTS `exam`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `exam` (
-  `exam_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `display_id` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `time` int(11) NOT NULL,
+CREATE TABLE `exam`
+(
+  `exam_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar
+(45) COLLATE utf8_unicode_ci NOT NULL,
+  `display_id` varchar
+(45) COLLATE utf8_unicode_ci NOT NULL,
+  `time` int
+(11) NOT NULL,
   `start_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`exam_id`)
+  PRIMARY KEY
+(`exam_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,17 +57,26 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `paper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paper` (
-  `paper_id` int(11) NOT NULL AUTO_INCREMENT,
-  `exam_id` int(11) NOT NULL,
-  `total_score` int(11) NOT NULL,
-  `subjective_score` int(11) NOT NULL,
-  `objective_score` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `paper`
+(
+  `paper_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `exam_id` int
+(11) NOT NULL,
+  `total_score` int
+(11) NOT NULL,
+  `subjective_score` int
+(11) NOT NULL,
+  `objective_score` int
+(11) NOT NULL,
+  `name` varchar
+(100) COLLATE utf8_unicode_ci NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  `user` int(11) NOT NULL,
-  PRIMARY KEY (`paper_id`)
+  `user` int
+(11) NOT NULL,
+  PRIMARY KEY
+(`paper_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -81,14 +96,20 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `paper_question`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paper_question` (
-  `paper_question_id` int(11) NOT NULL AUTO_INCREMENT,
-  `paper_id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
+CREATE TABLE `paper_question`
+(
+  `paper_question_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `paper_id` int
+(11) NOT NULL,
+  `question_id` int
+(11) NOT NULL,
+  `exam_id` int
+(11) NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`paper_question_id`)
+  PRIMARY KEY
+(`paper_question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -108,15 +129,22 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `question`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `question` (
-  `question_id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `type` int(11) NOT NULL,
-  `score` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
+CREATE TABLE `question`
+(
+  `question_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar
+(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int
+(11) NOT NULL,
+  `score` int
+(11) NOT NULL,
+  `exam_id` int
+(11) NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`question_id`)
+  PRIMARY KEY
+(`question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -136,17 +164,29 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `question_option`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `question_option` (
-  `option_id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `question_id` int(11) NOT NULL,
-  `is_correct` int(11) NOT NULL,
+CREATE TABLE `question_option`
+(
+  `option_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `content` varchar
+(255) COLLATE utf8_unicode_ci NOT NULL,
+  `question_id` int
+(11) NOT NULL,
+  `is_correct` int
+(11) NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`option_id`),
-  KEY `fk_question_option_1_idx` (`question_id`),
-  CONSTRAINT `fk_question_option_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`question_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY
+(`option_id`),
+  KEY `fk_question_option_1_idx`
+(`question_id`),
+  CONSTRAINT `fk_question_option_1` FOREIGN KEY
+(`question_id`) REFERENCES `question`
+(`question_id`) ON
+DELETE NO ACTION ON
+UPDATE NO ACTION
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,14 +205,20 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `type` int(11) NOT NULL,
+CREATE TABLE `user`
+(
+  `user_id` int
+(11) NOT NULL,
+  `name` varchar
+(45) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar
+(45) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int
+(11) NOT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY
+(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -192,17 +238,26 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user_paper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_paper` (
-  `user_paper_id` int(11) NOT NULL AUTO_INCREMENT,
-  `use_id` int(11) NOT NULL,
-  `paper_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `grade` int(11) NOT NULL,
-  `subjective_grade` int(11) DEFAULT NULL,
-  `objective_grade` int(11) DEFAULT NULL,
+CREATE TABLE `user_paper`
+(
+  `user_paper_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `use_id` int
+(11) NOT NULL,
+  `paper_id` int
+(11) NOT NULL,
+  `exam_id` int
+(11) NOT NULL,
+  `grade` int
+(11) NOT NULL,
+  `subjective_grade` int
+(11) DEFAULT NULL,
+  `objective_grade` int
+(11) DEFAULT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`user_paper_id`)
+  PRIMARY KEY
+(`user_paper_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -222,16 +277,24 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user_question`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_question` (
-  `user_question_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `question_id` int(11) NOT NULL,
-  `paper_id` int(11) NOT NULL,
-  `exam_id` int(11) NOT NULL,
-  `answer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `user_question`
+(
+  `user_question_id` int
+(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int
+(11) NOT NULL,
+  `question_id` int
+(11) NOT NULL,
+  `paper_id` int
+(11) NOT NULL,
+  `exam_id` int
+(11) NOT NULL,
+  `answer` varchar
+(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `create_time` datetime NOT NULL,
   `update_time` datetime NOT NULL,
-  PRIMARY KEY (`user_question_id`)
+  PRIMARY KEY
+(`user_question_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
