@@ -38,12 +38,14 @@ class ExamController extends Controller {
       'time',
       'start_time',
       'end_time',
+      'state',
     ]);
     // 参数判断。暂时先这样。后面我有时间了再写一个抛错中间件
     assert(row.name, 'controller.exam.create: name not null');
     assert(row.time, 'controller.exam.create: time not null');
     assert(row.start_time, 'controller.exam.create: start_time not null');
     assert(row.end_time, 'controller.exam.create: end_time not null');
+    // assert(row.state, 'controller.exam.create: state not null');
     row.display_id = shortid.generate();
     const exam = await service.exam.add(row);
     ctx.body = {
@@ -62,6 +64,7 @@ class ExamController extends Controller {
       'time',
       'start_time',
       'end_time',
+      'state'
     ]);
     const exam = await service.exam.update(row);
     ctx.body = {
