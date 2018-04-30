@@ -14,7 +14,7 @@ describe('test/app/controller/exam.test.js', () => {
     assert(_.isArray(res.body.content.exams), 'get /api/exam fail!');
   });
 
-  it('should POST /api/exam', async () => {
+  it.skip('should POST /api/exam', async () => {
     app.mockCsrf();
     const data = {
       name: '测试考试',
@@ -57,6 +57,41 @@ describe('test/app/controller/exam.test.js', () => {
     assert(exam.name === data.name, 'get /api/exam/:id fail!');
 
   });
+
+  it('should PUT api/exam/:id', async () => {
+    app.mockCsrf();
+    const data = {
+      name: '测试考试',
+      time: 100,
+      start_time: '2018-04-30 07:33:33',
+      end_time: '2018-04-30 08:33:33'
+    };
+    const res = await app.httpRequest()
+      .post('/api/exam')
+      .type('json')
+      .send(data)
+      .expect(200);
+    assert(res.body.content.exam.id, 'post /api/exam fail!');
+    assert(res.body.content.exam.name === data.name, 'post /api/exam fail!');
+    assert(res.body.content.exam.time === data.time, 'post /api/exam fail!');
+
+    const { id } = res.body.content.exam;
+    const updateData = {
+      id,
+      name: '测试考试更改',
+      time: 150
+    }
+    await app.httpRequest()
+      .put('/api/exam')
+      .type('json')
+      .send(updateData)
+      .expect(200);
+    const resGet = await app.httpRequest()
+      .get(`/api/exam/${id}`)
+      .expect(200);
+    assert(resGet.body.content.exam.name === updateData.name, 'post /api/exam fail!');
+    assert(resGet.body.content.exam.time === updateData.time, 'post /api/exam fail!');
+  })
 
   it('should DELETE /api/exam/:id', async () => {
     app.mockCsrf();

@@ -9,6 +9,7 @@ class ExamController extends Controller {
     const { ctx, service } = this;
     // 暂时不做分页。直接查询所有的考试
     const exams = await service.exam.get();
+    // const exams = {};
     ctx.body = {
       success: true,
       content: {
