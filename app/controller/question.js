@@ -51,7 +51,7 @@ class QuestionController extends Controller {
   async update() {
     const { ctx, service } = this;
     const row = _.pick(ctx.request.body, [
-      'id'
+      'id',
       'title',
       'type',
       'score',
@@ -73,7 +73,7 @@ class QuestionController extends Controller {
     await service.question.delete( { id });
     ctx.body = {
       success: true,
-      content: {,}
+      content: {},
     };
   }
 }
