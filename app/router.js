@@ -26,5 +26,10 @@ module.exports = app => {
   // 详见 test/app/controller/exam.test.js
   // 其他同理。
 
+  router.get('api/question', controller.question.index);
+  router.get('/api/question/:id', controller.exam.show);
+  router.post('api/question', controller.question.create);
+  router.put('api/question', controller.question.update);
+  router.delete('api/question/:id', controller.question.delete);
 
 };
