@@ -18,11 +18,11 @@ class QuestionController extends Controller {
   async show() {
     const { ctx, service } = this;
     const { id } = ctx.params;
-    const question = await service.examConfig.getOne({ id })
+    const question = await service.question.getOne({ id });
     ctx.body = {
       success: true,
       content: {
-        question
+        question,
       },
     };
   }
@@ -33,7 +33,7 @@ class QuestionController extends Controller {
       'title',
       'type',
       'score',
-      'exam_id'
+      'exam_id',
     ]);
     assert(row.title, 'controller.question.create: title not null');
     assert(row.type, 'controller.question.create: type not null');
@@ -55,13 +55,13 @@ class QuestionController extends Controller {
       'title',
       'type',
       'score',
-      'exam_id'
+      'exam_id',
     ]);
     const question = await service.question.update(row);
     ctx.body = {
       success: true,
       content: {
-        question
+        question,
       },
     };
   }
@@ -70,7 +70,7 @@ class QuestionController extends Controller {
     const { ctx, service } = this;
     const { id } = ctx.params;
     assert(id, 'controller.question.delete:id not null');
-    await service.question.delete( { id });
+    await service.question.delete({ id });
     ctx.body = {
       success: true,
       content: {},
@@ -78,4 +78,4 @@ class QuestionController extends Controller {
   }
 }
 
-module.exports =  QuestionController;
+module.exports = QuestionController;

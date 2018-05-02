@@ -46,7 +46,7 @@ class ExamController extends Controller {
     assert(row.start_time, 'controller.exam.create: start_time not null');
     assert(row.end_time, 'controller.exam.create: end_time not null');
     // 因为state里面有 0 所以不能再直接 assert 判断，精确判断是否是 [0, 1, 2] 里面的
-    assert([0, 1, 2].includes(row.state), 'controller.exam.create: state not null');
+    assert([ 0, 1, 2 ].includes(row.state), 'controller.exam.create: state not null');
     row.display_id = shortid.generate();
     const exam = await service.exam.add(row);
     ctx.body = {
@@ -65,7 +65,7 @@ class ExamController extends Controller {
       'time',
       'start_time',
       'end_time',
-      'state'
+      'state',
     ]);
     const exam = await service.exam.update(row);
     ctx.body = {

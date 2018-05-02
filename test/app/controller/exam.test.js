@@ -85,7 +85,7 @@ describe('test/app/controller/exam.test.js', () => {
       name: '测试考试更改',
       time: 150,
       state: 1,
-    }
+    };
     await app.httpRequest()
       .put('/api/exam')
       .type('json')
@@ -97,7 +97,7 @@ describe('test/app/controller/exam.test.js', () => {
     assert(resGet.body.content.exam.name === updateData.name, 'post /api/exam fail!');
     assert(resGet.body.content.exam.time === updateData.time, 'post /api/exam fail!');
     assert(resGet.body.content.exam.state === updateData.state, 'post /api/exam fail!');
-  })
+  });
 
   it('should DELETE /api/exam/:id', async () => {
     app.mockCsrf();
