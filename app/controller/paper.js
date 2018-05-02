@@ -68,7 +68,7 @@ class PaperController extends Controller {
     ctx.body = {
       success: true,
       content: {
-        exam,
+        paper,
       },
     };
   }
