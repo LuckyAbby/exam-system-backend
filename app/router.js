@@ -32,4 +32,9 @@ module.exports = app => {
   router.put('/api/question', controller.question.update);
   router.delete('/api/question/:id', controller.question.delete);
 
+  router.get('/api/paper', controller.paper.index);
+  router.get('/api/paper/:id', controller.paper.show);
+  router.post('/api/paper', controller.paper.create);
+  router.put('/api/paper', controller.paper.update);
+  router.delete('/api/paper/:id', controller.paper.delete);
 };
