@@ -37,4 +37,10 @@ module.exports = app => {
   router.post('/api/paper', controller.paper.create);
   router.put('/api/paper', controller.paper.update);
   router.delete('/api/paper/:id', controller.paper.delete);
+
+  // router.get('/api/student', controller.student.index);
+  // router.get('/api/student/:id', controller.student.show);
+  // router.post('/api/student', controller.student.create);
+  // router.put('/api/student', controller.student.update);
+  // router.delete('/api/student/:id', controller.student.delete);
 };
