@@ -19,13 +19,18 @@ class PaperController extends Controller {
     const { ctx, service } = this;
     const { id } = ctx.params;
     const paper = await service.paper.getOne({ id });
-    const questionIds = await service.paperQuestion.get({paper_id: id});
-    console.log('questionIds', questionIds);
-    const questionIdArr = questionIds.map(item => item.question_id);
-    console.log('questionIdArr', questionIdArr);
-    const questions = await service.question.get({id: questionIdArr});
-    console.log('questions', questions);
-    paper.questions = questions;
+    if (paper) {
+      const questionIds = await service.paperQuestion.get({ paper_id: id });
+      console.log('questionIds', questionIds);
+      const questionIdArr = questionIds.map(item => item.question_id);
+      console.log('questionIdArr', questionIdArr);
+      const questions = questionIdArr.length
+        ? (await service.question.get({ id: questionIdArr }))
+        : [];
+      console.log('questions', questions);
+      paper.questions = questions;
+    }
+
     ctx.body = {
       success: true,
       content: {
@@ -57,13 +62,13 @@ class PaperController extends Controller {
     const { questionIds, exam_id } = ctx.request.body;
     assert(questionIds, 'controller.paper.crete: questionIds not null');
     assert(exam_id, 'controller.paper.crete: exam_id not null');
-    const questionIdsObj = questionIds.map(item =>{
+    const questionIdsObj = questionIds.map(item => {
       const itemObject = {};
       itemObject.question_id = item;
       itemObject.exam_id = exam_id;
       itemObject.paper_id = paper_id;
       return itemObject;
-    })
+    });
 
     await service.paperQuestion.addRows(questionIdsObj);
     ctx.body = {
@@ -90,14 +95,14 @@ class PaperController extends Controller {
     if (ctx.request.body.questionIds.length > 0) {
       const { id } = ctx.request.body;
       const { questionIds, exam_id } = ctx.request.body;
-      const questionIdsObj = questionIds.map(item =>{
+      const questionIdsObj = questionIds.map(item => {
         const itemObject = {};
         itemObject.question_id = item;
         itemObject.exam_id = exam_id;
         itemObject.paper_id = id;
         return itemObject;
-      })
-      await service.paperQuestion.delete({paper_id: id});
+      });
+      await service.paperQuestion.delete({ paper_id: id });
       await service.paperQuestion.addRows(questionIdsObj);
     }
     ctx.body = {
@@ -113,10 +118,10 @@ class PaperController extends Controller {
     const { id } = ctx.params;
     assert(id, 'controller.paper.delete: id not null');
     await service.paper.delete({ id });
-    await service.paperQuestion.delete({paper_id: id});
+    await service.paperQuestion.delete({ paper_id: id });
     ctx.body = {
       success: true,
-      content: {}
+      content: {},
     };
   }
 }

@@ -4,14 +4,14 @@ const _ = require('lodash');
 const { app, assert } = require('egg-mock/bootstrap');
 
 describe('test/app/controller/paper.test.js', () => {
-  it('should GET /api/paper', async () => {
+  it.skip('should GET /api/paper', async () => {
     const res = await app.httpRequest()
       .get('/api/paper')
       .expect(200);
     assert(_.isArray(res.body.content.papers), 'get /api/paper fail!');
-  })
+  });
 
-  it('should POST /api/paper', async () => {
+  it.skip('should POST /api/paper', async () => {
     app.mockCsrf();
     const data = {
       name: '测试试卷',
@@ -20,7 +20,7 @@ describe('test/app/controller/paper.test.js', () => {
       total_score: 99,
       subjective_score: 98,
       objective_score: 97,
-      questionIds: [1,2,3],
+      questionIds: [ 1, 2, 3 ],
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -42,7 +42,7 @@ describe('test/app/controller/paper.test.js', () => {
       total_score: 99,
       subjective_score: 97,
       objective_score: 98,
-      questionIds: [1,2,3],
+      questionIds: [ 1, 2, 3 ],
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -57,12 +57,12 @@ describe('test/app/controller/paper.test.js', () => {
     const { id } = paper;
     const resGet = await app.httpRequest()
       .get(`/api/paper/${id}`);
-    const paperGet  = resGet.body.content.paper;
+    const paperGet = resGet.body.content.paper;
     assert(paperGet.id === id, 'get /api/paper/:id fail!');
     assert(paperGet.name === data.name, 'get /api/paper/:id fail!');
   });
 
-  it('should PUT /api/paper', async () =>{
+  it.skip('should PUT /api/paper', async () => {
     app.mockCsrf();
     const data = {
       name: '测试考试',
@@ -71,7 +71,7 @@ describe('test/app/controller/paper.test.js', () => {
       total_score: 98,
       subjective_score: 97,
       objective_score: 96,
-      questionIds: [1,2,3],
+      questionIds: [ 1, 2, 3 ],
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -88,7 +88,7 @@ describe('test/app/controller/paper.test.js', () => {
       id,
       name: '测试试卷更改questions',
       subjective_score: 100,
-      questionIds: [6,7,8],
+      questionIds: [ 6, 7, 8 ],
       exam_id: 1,
     };
     await app.httpRequest()
@@ -112,7 +112,7 @@ describe('test/app/controller/paper.test.js', () => {
       subjective_score: 90,
       total_score: 100,
       objective_score: 90,
-      questionIds: [1,2,3],
+      questionIds: [ 1, 2, 3 ],
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -130,6 +130,8 @@ describe('test/app/controller/paper.test.js', () => {
     const resGet = await app.httpRequest()
       .get(`/api/paper/${id}`);
       // console.log('resGet', resGet);
-      assert(resGet.body.content.paper === null, 'delete /api/paper fail!');
+    console.log('resGet.body.content: ', resGet.body.content);
+
+    assert(resGet.body.content.paper === null, 'delete /api/paper fail!');
   });
 });
