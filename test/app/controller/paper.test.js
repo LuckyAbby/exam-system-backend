@@ -16,12 +16,11 @@ describe('test/app/controller/paper.test.js', () => {
     const data = {
       name: '测试试卷',
       user: 1,
-      exam_id: 12,
+      exam_id: 2,
       total_score: 99,
       subjective_score: 98,
       objective_score: 97,
       questionIds: [1,2,3],
-      exam_id: 1,
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -39,12 +38,11 @@ describe('test/app/controller/paper.test.js', () => {
     const data = {
       name: '测试试卷',
       user: 12,
-      exam_id: 123,
+      exam_id: 3,
       total_score: 99,
       subjective_score: 97,
       objective_score: 98,
       questionIds: [1,2,3],
-      exam_id: 1,
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -69,12 +67,11 @@ describe('test/app/controller/paper.test.js', () => {
     const data = {
       name: '测试考试',
       user: 23,
-      exam_id: 122,
+      exam_id: 2,
       total_score: 98,
       subjective_score: 97,
       objective_score: 96,
       questionIds: [1,2,3],
-      exam_id: 1,
     };
     const res = await app.httpRequest()
       .post('/api/paper')
@@ -116,7 +113,6 @@ describe('test/app/controller/paper.test.js', () => {
       total_score: 100,
       objective_score: 90,
       questionIds: [1,2,3],
-      exam_id: 1,
     };
     const res = await app.httpRequest()
       .post('/api/paper')
