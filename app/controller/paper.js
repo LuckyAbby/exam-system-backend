@@ -21,14 +21,14 @@ class PaperController extends Controller {
     const paper = await service.paper.getOne({ id });
     if (paper) {
       const questionIds = await service.paperQuestion.get({ paper_id: id });
-      console.log('questionIds', questionIds);
       const questionIdArr = questionIds.map(item => item.question_id);
-      console.log('questionIdArr', questionIdArr);
       const questions = questionIdArr.length
         ? (await service.question.get({ id: questionIdArr }))
         : [];
-      console.log('questions', questions);
       paper.questions = questions;
+      // 查询该试卷对应的阅卷人
+      // const { user } = paper;
+      // const userInfo = await service.user
     }
 
     ctx.body = {

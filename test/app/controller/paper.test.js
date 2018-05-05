@@ -4,14 +4,14 @@ const _ = require('lodash');
 const { app, assert } = require('egg-mock/bootstrap');
 
 describe('test/app/controller/paper.test.js', () => {
-  it.skip('should GET /api/paper', async () => {
+  it('should GET /api/paper', async () => {
     const res = await app.httpRequest()
       .get('/api/paper')
       .expect(200);
     assert(_.isArray(res.body.content.papers), 'get /api/paper fail!');
   });
 
-  it.skip('should POST /api/paper', async () => {
+  it('should POST /api/paper', async () => {
     app.mockCsrf();
     const data = {
       name: '测试试卷',
@@ -33,7 +33,7 @@ describe('test/app/controller/paper.test.js', () => {
     assert(paper.user === data.user, 'post /api/paper fail!');
   });
 
-  it.skip('should GET /api/paper/:id', async () => {
+  it('should GET /api/paper/:id', async () => {
     app.mockCsrf();
     const data = {
       name: '测试试卷',
@@ -62,7 +62,7 @@ describe('test/app/controller/paper.test.js', () => {
     assert(paperGet.name === data.name, 'get /api/paper/:id fail!');
   });
 
-  it.skip('should PUT /api/paper', async () => {
+  it('should PUT /api/paper', async () => {
     app.mockCsrf();
     const data = {
       name: '测试考试',
@@ -129,8 +129,6 @@ describe('test/app/controller/paper.test.js', () => {
       .expect(200);
     const resGet = await app.httpRequest()
       .get(`/api/paper/${id}`);
-      // console.log('resGet', resGet);
-    console.log('resGet.body.content: ', resGet.body.content);
 
     assert(resGet.body.content.paper === null, 'delete /api/paper fail!');
   });

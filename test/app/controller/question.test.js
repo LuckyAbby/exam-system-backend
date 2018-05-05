@@ -20,6 +20,13 @@ describe('test/app/controller/question.test.js', () => {
       type: 1,
       score: 10,
       exam_id: 1,
+      options: [{
+        content: '小明是男孩',
+        is_correct: true,
+      }, {
+        content: '小明是女孩',
+        is_correct: false,
+      }],
     };
     const res = await app.httpRequest()
       .post('/api/question')
@@ -36,7 +43,7 @@ describe('test/app/controller/question.test.js', () => {
     app.mockCsrf();
     const data = {
       title: '测试题目',
-      type: 1,
+      type: 2,
       score: 20,
       exam_id: 2,
     };
@@ -53,8 +60,8 @@ describe('test/app/controller/question.test.js', () => {
     const resGet = await app.httpRequest()
       .get(`/api/question/${id}`);
     const { question } = resGet.body.content;
-    assert(question.id === id, 'get /api/exam/:id fail!');
-    assert(question.title === data.title, 'get /api/exam/:id fail!');
+    assert(question.id === id, 'get /api/question/:id fail!');
+    assert(question.title === data.title, 'get /api/question/:id fail!');
   });
 
   it('should PUT /api/question/:id', async () => {
@@ -64,6 +71,16 @@ describe('test/app/controller/question.test.js', () => {
       type: 1,
       score: 30,
       exam_id: 5,
+      options: [{
+        content: '小明说谎了',
+        is_correct: true,
+      }, {
+        content: '小红说谎了',
+        is_correct: false,
+      }, {
+        content: '谁都没有说谎',
+        is_correct: false,
+      }],
     };
     const res = await app.httpRequest()
       .post('/api/question')
@@ -78,7 +95,7 @@ describe('test/app/controller/question.test.js', () => {
     const updateData = {
       id,
       title: '测试题目更改',
-      type: 4,
+      type: 2,
       score: 22,
       exam_id: 6,
     };
@@ -103,6 +120,16 @@ describe('test/app/controller/question.test.js', () => {
       type: 1,
       score: 10,
       exam_id: 10,
+      options: [{
+        content: '小明说谎了',
+        is_correct: true,
+      }, {
+        content: '小红说谎了',
+        is_correct: false,
+      }, {
+        content: '谁都没有说谎',
+        is_correct: false,
+      }],
     };
     const res = await app.httpRequest()
       .post('/api/question')
