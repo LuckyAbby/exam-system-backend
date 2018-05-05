@@ -62,16 +62,15 @@ class UserController extends Controller {
 
   async index() {
     const { ctx, service } = this;
-    const { id, password } = ctx.request.body;
-    const user = await service.user.getOne({ id });
-    if (user && user.password === password) {
-      ctx.body = {
-        success: true,
-        content: {
-          user,
-        },
-      };
-    }
+    const { account, password } = ctx.request.body;
+    const user = await service.user.getOne({ account });
+    assert(user && user.password === password, '密码错误');
+    ctx.body = {
+      success: true,
+      content: {
+        user,
+      },
+    };
   }
 
   async create() {

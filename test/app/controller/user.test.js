@@ -7,7 +7,7 @@ describe('test/app/controller/user.test.js', () => {
   it('should POST /login', async () => {
     app.mockCsrf();
     const data = {
-      account: '111115 ',
+      account: '111116',
       password: '111',
       name: '张三1',
       sex: 1,
@@ -26,7 +26,7 @@ describe('test/app/controller/user.test.js', () => {
     assert(user.account === data.account, 'post /register fail');
     assert(user.name === data.name, 'post /register fail');
     const loginData = {
-      account: '111112',
+      account: '111116',
       password: '111',
     };
     const resGet = await app.httpRequest()
@@ -36,7 +36,7 @@ describe('test/app/controller/user.test.js', () => {
       .expect(200);
     assert(resGet.body.content.user.account === loginData.account, 'post /login fail');
   });
-  it.skip('should POST /register', async () => {
+  it('should POST /register', async () => {
     app.mockCsrf();
     const data = {
       account: '111111',
