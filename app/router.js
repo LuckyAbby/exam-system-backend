@@ -38,9 +38,9 @@ module.exports = app => {
   router.put('/api/paper', controller.paper.update);
   router.delete('/api/paper/:id', controller.paper.delete);
 
-  // router.get('/api/student', controller.student.index);
-  // router.get('/api/student/:id', controller.student.show);
-  // router.post('/api/student', controller.student.create);
-  // router.put('/api/student', controller.student.update);
-  // router.delete('/api/student/:id', controller.student.delete);
+  router.get('/api/examinee', controller.examinee.index);
+  router.get('/api/examinee/:id', controller.examinee.show);
+  router.post('/api/examinee', controller.examinee.create);
+  router.put('/api/examinee', controller.examinee.update);
+  router.delete('/api/examinee/:id', controller.examinee.delete);
 };

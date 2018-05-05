@@ -8,6 +8,8 @@ class UserController extends Controller {
     const res = await service.user.add({
       name: `user_${Math.random().toString().substr(2)}`,
       password: 'xxx',
+      tel: 888888,
+      email: '888888@qq.com',
       type: 1,
     });
     console.log('res: ', res, '\n');
