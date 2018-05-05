@@ -78,14 +78,14 @@ class UserController extends Controller {
     const { ctx, service } = this;
     const row = _.pick(ctx.request.body, [
       'name',
-      'id',
+      'account',
       'tel',
       'email',
       'sex',
       'password',
       'type',
     ]);
-    assert(row.id, 'controller.login.index: id not null');
+    assert(row.account, 'controller.login.index: account not null');
     assert(row.name, 'controller.login.index: name not null');
     assert(row.tel, 'controller.login.index: tel not null');
     assert(row.email, 'controller.login.index: email not null');

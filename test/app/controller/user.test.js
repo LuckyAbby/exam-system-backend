@@ -4,10 +4,10 @@ const _ = require('lodash');
 const { app, assert } = require('egg-mock/bootstrap');
 
 describe('test/app/controller/user.test.js', () => {
-  it('should POST /index', async () => {
+  it('should POST /login', async () => {
     app.mockCsrf();
     const data = {
-      id: '111114',
+      account: '111115 ',
       password: '111',
       name: '张三1',
       sex: 1,
@@ -23,10 +23,10 @@ describe('test/app/controller/user.test.js', () => {
     const { user } = res.body.content;
     // console.log
     assert(user.id, 'post /register fail');
-    assert(user.id === data.id, 'post /register fail');
+    assert(user.account === data.account, 'post /register fail');
     assert(user.name === data.name, 'post /register fail');
     const loginData = {
-      id: '111112',
+      account: '111112',
       password: '111',
     };
     const resGet = await app.httpRequest()
@@ -34,12 +34,12 @@ describe('test/app/controller/user.test.js', () => {
       .type('json')
       .send(loginData)
       .expect(200);
-    assert(resGet.body.content.user.id === loginData.id, 'post /login fail');
+    assert(resGet.body.content.user.account === loginData.account, 'post /login fail');
   });
   it.skip('should POST /register', async () => {
     app.mockCsrf();
     const data = {
-      id: '111111',
+      account: '111111',
       password: '111',
       name: '张三',
       sex: 1,
@@ -54,7 +54,7 @@ describe('test/app/controller/user.test.js', () => {
       .expect(200);
     const { user } = res.body.content;
     assert(user.id, 'post /register fail');
-    assert(user.id === data.id, 'post /register fail');
+    assert(user.account === data.account, 'post /register fail');
     assert(user.name === data.name, 'post /register fail');
   });
 
