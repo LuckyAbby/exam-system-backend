@@ -55,6 +55,7 @@ class ExamineeController extends Controller {
       'sex',
       'tel',
       'email',
+      'account',
     ]);
     const examinee = await service.user.update(row);
     ctx.body = {
