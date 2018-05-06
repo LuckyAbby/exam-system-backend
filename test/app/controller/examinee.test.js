@@ -14,7 +14,7 @@ describe('test/app/controller/examinee.test.js', () => {
   it('should post /api/examinee', async () => {
     app.mockCsrf();
     const data = {
-      user_id: 12,
+      user_id: 1,
       exam_id: 1,
     };
     const res = await app.httpRequest()
@@ -95,7 +95,7 @@ describe('test/app/controller/examinee.test.js', () => {
   it('should DELETE /api/examinee/:id', async () => {
     app.mockCsrf();
     const data = {
-      user_id: 11,
+      user_id: 2,
       exam_id: 1,
     };
     const res = await app.httpRequest()

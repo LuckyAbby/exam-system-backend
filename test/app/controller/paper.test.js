@@ -37,7 +37,7 @@ describe('test/app/controller/paper.test.js', () => {
     app.mockCsrf();
     const data = {
       name: '测试试卷',
-      user: 12,
+      user: 2,
       exam_id: 3,
       total_score: 99,
       subjective_score: 97,
@@ -66,7 +66,7 @@ describe('test/app/controller/paper.test.js', () => {
     app.mockCsrf();
     const data = {
       name: '测试考试',
-      user: 23,
+      user: 3,
       exam_id: 2,
       total_score: 98,
       subjective_score: 97,
@@ -107,7 +107,7 @@ describe('test/app/controller/paper.test.js', () => {
     app.mockCsrf();
     const data = {
       name: '测试试卷',
-      user: 11,
+      user: 2,
       exam_id: 10,
       subjective_score: 90,
       total_score: 100,
