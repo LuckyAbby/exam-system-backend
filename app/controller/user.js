@@ -92,9 +92,7 @@ class UserController extends Controller {
     assert(row.sex, 'controller.login.index: sex not null');
     assert(row.type, 'controller.login.index: type not null');
     // const user = await service.user.add(row);
-    console.log('row', row);
     const user = await service.user.add(row);
-    console.log('user', user);
     ctx.body = {
       success: true,
       content: {

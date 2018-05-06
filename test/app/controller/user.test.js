@@ -21,7 +21,6 @@ describe('test/app/controller/user.test.js', () => {
       .send(data)
       .expect(200);
     const { user } = res.body.content;
-    // console.log
     assert(user.id, 'post /register fail');
     assert(user.account === data.account, 'post /register fail');
     assert(user.name === data.name, 'post /register fail');
@@ -36,6 +35,7 @@ describe('test/app/controller/user.test.js', () => {
       .expect(200);
     assert(resGet.body.content.user.account === loginData.account, 'post /login fail');
   });
+
   it('should POST /register', async () => {
     app.mockCsrf();
     const data = {
