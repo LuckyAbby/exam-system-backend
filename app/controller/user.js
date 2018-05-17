@@ -100,6 +100,19 @@ class UserController extends Controller {
       },
     };
   }
+
+  async show() {
+    const { ctx } = this;
+    const id = 4; // TODO: get id from session
+    const user = await this.service.user.getOne({ id });
+    const filter = [ 'id', 'name', 'sex', 'create_time', 'account', 'tel', 'type', 'update_time' ];
+    ctx.body = {
+      success: true,
+      content: {
+        user: _.pick(user, filter),
+      },
+    };
+  }
 }
 
 module.exports = UserController;

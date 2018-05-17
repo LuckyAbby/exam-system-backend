@@ -14,7 +14,7 @@ module.exports = appInfo => {
       host: '127.0.0.1',
       port: '3306',
       user: 'root',
-      password: '0000',
+      password: 'root',
       database: 'exam_system',
     },
     app: true,
@@ -22,4 +22,8 @@ module.exports = appInfo => {
   };
 
   return config;
+};
+
+exports.security = {
+  domainWhiteList: [ 'http://localhost:8000' ],
 };

@@ -12,6 +12,7 @@ module.exports = app => {
 
   router.post('/login', controller.user.index);
   router.post('/register', controller.user.create);
+  router.get('/api/currentUser', controller.user.show);
 
 
   // exam
