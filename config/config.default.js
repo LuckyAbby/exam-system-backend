@@ -21,9 +21,12 @@ module.exports = appInfo => {
     agent: false,
   };
 
-  return config;
-};
+  config.security = {
+    domainWhiteList: [ 'http://localhost:8000' ],
+    csrf: {
+      enable: false,
+    },
+  };
 
-exports.security = {
-  domainWhiteList: [ 'http://localhost:8000' ],
+  return config;
 };
