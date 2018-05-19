@@ -69,6 +69,8 @@ class ExamController extends Controller {
       'end_time',
       'state',
     ]);
+    row.start_time = new Date(row.start_time);
+    row.end_time = new Date(row.end_time);
     const exam = await service.exam.update(row);
     ctx.body = {
       success: true,
