@@ -7,7 +7,7 @@ describe('test/app/controller/question.test.js', () => {
 
   it('should GET /api/question', async () => {
     const res = await app.httpRequest()
-      .get('/api/question')
+      .get('/api/question?exam_id=1')
       .expect(200);
 
     assert(_.isArray(res.body.content.questions), 'get /api/questions fail!');

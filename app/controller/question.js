@@ -6,7 +6,8 @@ const Controller = require('egg').Controller;
 class QuestionController extends Controller {
   async index() {
     const { ctx, service } = this;
-    const questions = await service.question.get();
+    const { exam_id } = ctx.query;
+    const questions = await service.question.get({ exam_id });
     ctx.body = {
       success: true,
       content: {
