@@ -6,7 +6,7 @@ const { app, assert } = require('egg-mock/bootstrap');
 describe('test/app/controller/paper.test.js', () => {
   it('should GET /api/paper', async () => {
     const res = await app.httpRequest()
-      .get('/api/paper')
+      .get('/api/paper?exam_id=1')
       .expect(200);
     assert(_.isArray(res.body.content.papers), 'get /api/paper fail!');
   });
