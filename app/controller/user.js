@@ -6,10 +6,10 @@ const assert = require('assert');
 class UserController extends Controller {
   async login() {
     const { ctx, service } = this;
-    const { account, password } = ctx.query;
+    const { account, password } = ctx.request.body;
     assert(account, 'account not null');
     assert(password, 'password not null');
-    const user = await service.question.getOne({ account, password });
+    const user = await service.user.getOne({ account, password });
     assert(user, '用户名或密码错误');
     assert(user.id, '用户名或密码错误');
     ctx.session.userId = user.id;
