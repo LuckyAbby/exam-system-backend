@@ -33,10 +33,14 @@ class ExamineeController extends Controller {
 
   async create() {
     const { ctx, service } = this;
-    const row = _.pick(ctx.request.body, [
-      'user_id',
-      'exam_id',
-    ]);
+    const { account, exam_id } = ctx.request.body;
+    const user = await service.user.getOne({ account });
+    console.log('user', user);
+    const user_id = user.id;
+    const row = {
+      user_id,
+      exam_id,
+    };
     const examinee = await service.examinee.add(row);
     ctx.body = {
       success: true,
