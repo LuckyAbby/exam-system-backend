@@ -8,7 +8,7 @@ class ExamineeController extends Controller {
     const { ctx, service } = this;
     const { exam_id } = ctx.query;
     const examinees = await service.examinee.query(
-      'select ue.id, user_id, name, sex, tel, email, exam_id from user_exam ue, user where user.id = ue.user_id and exam_id = ?'
+      'select ue.id, user_id, name, sex, tel, email, account, exam_id from user_exam ue, user where user.id = ue.user_id and exam_id = ?'
       , [ exam_id ]);
     // console.log('examinees', examinees);
     ctx.body = {
