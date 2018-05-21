@@ -7,7 +7,10 @@ module.exports = app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
   router.post('/api/login', controller.user.login);
+  router.post('/api/register', controller.user.register);
   router.post('/api/logout', controller.user.logout);
+
+  router.get('/api/user', controller.user.index);
 
   // router.get('/user', controller.user.index);
   // router.post('/user', controller.user.create);
@@ -17,9 +20,9 @@ module.exports = app => {
   // router.get('/api/currentUser', controller.user.show);
 
 
-  // // exam
-  // // 获取考试列表
-  // router.get('/api/exam', controller.exam.index);
+  // exam
+  // 获取考试列表
+  router.get('/api/exam', controller.exam.index);
   // // 获取单个考试
   // router.get('/api/exam/:id', controller.exam.show);
   // // 新建一个考试
