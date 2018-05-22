@@ -73,14 +73,14 @@ class QuestionController extends Controller {
       'exam_id',
     ]);
     const question = await service.question.update(row);
-    await service.questionOption.delete({ question_id: row.id });
-    if (row.type === 1) {
+    if (row.type === 1 || row.type === 2) {
+      await service.questionOption.delete({ question_id: row.id });
       const { options } = ctx.request.body;
       const optionsObj = options.map(item => {
         item.question_id = row.id;
         return item;
       });
-      await service.questionOption.addRows({ optionsObj });
+      await service.questionOption.addRows(optionsObj);
     }
     ctx.body = {
       success: true,
