@@ -43,8 +43,8 @@ class UserController extends Controller {
       'email',
       'tel',
       'password',
+      'sex',
     ]);
-    data.sex = 1;
     data.type = 1;
     assert(data.name, 'name not null');
     assert(data.account, 'account not null');
