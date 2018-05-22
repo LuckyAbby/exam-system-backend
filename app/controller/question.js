@@ -45,7 +45,7 @@ class QuestionController extends Controller {
     assert(row.score, 'controller.question.create: score not null');
     assert(row.exam_id, 'controller.question.create: exam_id not null');
     const question = await service.question.add(row);
-    if (row.type === 1) { // 客观题需要创建选项
+    if (row.type === 1 || row.type === 2) { // 客观题需要创建选项
       const { id } = question;
       const { options } = ctx.request.body;
       assert(options, 'controller.question.create:options not null');
