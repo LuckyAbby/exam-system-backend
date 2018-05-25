@@ -31,7 +31,7 @@ class PaperController extends Controller {
       paper.questions = questions;
       // 查询该试卷对应的阅卷人
       const { user } = paper;
-      console.log('user', user);
+      // console.log('user', user);
       const userInfo = await service.user.getOne({ account: user });
       const { name } = userInfo;
       paper.checkName = name;
