@@ -32,10 +32,10 @@ class PaperController extends Controller {
       // 查询该试卷对应的阅卷人
       const { user } = paper;
       console.log('user', user);
-      const userInfo = await service.user.getOne({ id: user });
-      const { name, account } = userInfo;
-      paper.user = name;
-      paper.account = account;
+      const userInfo = await service.user.getOne({ account: user });
+      const { name } = userInfo;
+      paper.checkName = name;
+      // paper.account = user;
     }
 
     ctx.body = {
