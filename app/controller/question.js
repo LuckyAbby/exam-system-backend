@@ -45,7 +45,7 @@ class QuestionController extends Controller {
     assert(row.score, 'controller.question.create: score not null');
     assert(row.exam_id, 'controller.question.create: exam_id not null');
     const question = await service.question.add(row);
-    if (row.type === 1) { // 客观题需要创建选项
+    if (row.type === 1 || row.type === 2) { // 客观题需要创建选项
       const { id } = question;
       const { options } = ctx.request.body;
       assert(options, 'controller.question.create:options not null');
@@ -73,14 +73,14 @@ class QuestionController extends Controller {
       'exam_id',
     ]);
     const question = await service.question.update(row);
-    await service.questionOption.delete({ question_id: row.id });
-    if (row.type === 1) {
+    if (row.type === 1 || row.type === 2) {
+      await service.questionOption.delete({ question_id: row.id });
       const { options } = ctx.request.body;
       const optionsObj = options.map(item => {
         item.question_id = row.id;
         return item;
       });
-      await service.questionOption.addRows({ optionsObj });
+      await service.questionOption.addRows(optionsObj);
     }
     ctx.body = {
       success: true,
