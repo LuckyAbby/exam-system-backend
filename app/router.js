@@ -23,6 +23,9 @@ module.exports = app => {
   // exam
   // 获取考试列表
   router.get('/api/exam', controller.exam.index);
+
+  // paper
+  router.get('/api/paper/:id', controller.paper.show);
   // // 获取单个考试
   // router.get('/api/exam/:id', controller.exam.show);
   // // 新建一个考试

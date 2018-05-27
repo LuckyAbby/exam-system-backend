@@ -7,7 +7,9 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1523829971439_2128';
 
   // add your config here
-  config.middleware = [];
+  config.middleware = [
+    'errorHandler',
+  ];
 
   config.mysql = {
     client: {
