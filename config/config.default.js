@@ -8,7 +8,6 @@ module.exports = appInfo => {
 
   // add your config here
   config.middleware = [
-    // 'error_handler',
     'errorHandler',
   ];
 
