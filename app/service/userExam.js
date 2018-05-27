@@ -4,7 +4,7 @@ const assert = require('assert');
 const TABLE = 'user_exam';
 
 module.exports = app => {
-  class Examinee extends app.Service {
+  class UserExamService extends app.Service {
     constructor(ctx) {
       super(ctx);
       this.table = TABLE;
@@ -30,5 +30,5 @@ module.exports = app => {
     }
   }
 
-  return Examinee;
+  return UserExamService;
 };
