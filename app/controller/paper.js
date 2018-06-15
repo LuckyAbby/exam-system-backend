@@ -43,8 +43,10 @@ class PaperController extends Controller {
         });
       }
       paper.questions = questions;
-    }
 
+      const exam = await service.exam.getOne({ id: paper.exam_id });
+      paper.exam_info = exam;
+    }
     ctx.body = {
       success: true,
       content: {

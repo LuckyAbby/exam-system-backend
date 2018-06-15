@@ -13,8 +13,10 @@ class ExamController extends Controller {
     const user_exams = await service.userExam.get({ user_id });
     const exam_ids = _.map(user_exams, 'exam_id');
     let exams = _.isEmpty(exam_ids) ? [] : (await service.exam.get({ id: exam_ids }));
+
     const userPapers = _.isEmpty(exam_ids) ? [] : (await service.userPaper.get({
-      user_id,
+      // TODO: user_id error
+      // user_id,
       exam_id: exam_ids,
       // subjective_grade: null,
       // objective_grade: null,
