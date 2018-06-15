@@ -1,4 +1,6 @@
 'use strict';
+const path = require('path');
+
 
 module.exports = appInfo => {
   const config = exports = {};
@@ -28,6 +30,17 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
+  };
+
+  config.view = {
+    mapping: {
+      '.ejs': 'ejs',
+    },
+  };
+
+  config.static = {
+    prefix: '/',
+    dir: path.join(appInfo.baseDir, 'app/public'),
   };
 
   return config;
