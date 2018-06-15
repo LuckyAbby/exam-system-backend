@@ -11,3 +11,17 @@ exports.cors = {
   enable: true,
   package: 'egg-cors',
 };
+
+// exports.nunjucks = {
+//   enable: true,
+//   package: 'egg-view',
+// };
+
+exports.ejs = {
+  enable: true,
+  package: 'egg-view-ejs',
+};
+
+// exports.static = {
+//   enable: true,
+// };

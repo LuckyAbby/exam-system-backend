@@ -56,4 +56,7 @@ module.exports = app => {
   // router.post('/api/examinee', controller.examinee.create);
   // router.put('/api/examinee', controller.examinee.update);
   // router.delete('/api/examinee/:id', controller.examinee.delete);
+
+
+  router.get('*', controller.home.index);
 };
