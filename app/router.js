@@ -10,8 +10,8 @@ module.exports = app => {
   // router.get('/user', controller.user.index);
   // router.post('/user', controller.user.create);
 
-  router.post('/login', controller.user.index);
-  router.post('/register', controller.user.create);
+  router.post('/api/login', controller.user.index);
+  router.post('/api/register', controller.user.create);
   router.get('/api/currentUser', controller.user.show);
 
 
